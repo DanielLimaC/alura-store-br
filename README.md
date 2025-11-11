@@ -1,4 +1,4 @@
-# Análise Estratégica: Decisão de Venda da Alura Store 🏪
+# Análise de Desempenho: Alura Store 🏪
 
 Este projeto foi desenvolvido como parte do Desafio Alura (Python para Data Science). O foco é aplicar fundamentos da linguagem Python para realizar uma análise de desempenho em 4 lojas de e-commerce e fornecer uma recomendação estratégica baseada em dados.
 
@@ -8,39 +8,38 @@ O Sr. João, proprietário da rede de e-commerce "Alura Store", enfrenta uma dec
 
 O objetivo desta análise é ir além dos números superficiais (como faturamento bruto) e identificar qual das lojas possui o **menor potencial estratégico** a longo prazo, fundamentando a recomendação de qual unidade deve ser vendida.
 
-## ⚙️ Metodologia e Estrutura do Repositório
+## 1. O Propósito da Análise
 
-Toda a análise está consolidada em um único Jupyter Notebook, permitindo total reprodutibilidade. A ênfase foi usar o Python "raiz" (estruturas nativas) para construir a lógica de análise.
+Este projeto foi desenvolvido para o **Challenge de Data Science da Alura**, com o objetivo de realizar uma análise de ponta a ponta sobre o desempenho de 4 lojas da rede "Alura Store".
 
-  * `README.md`: (Este arquivo) Uma visão geral do projeto, da metodologia e das conclusões.
-  * `AluraStoreBrasil.ipynb`: O notebook Jupyter central que documenta todo o processo:
-      * **Extração de Dados:** Carregamento e manipulação inicial dos dados utilizando a biblioteca Pandas.
-      * **Cálculo de Métricas:** Desenvolvimento de 5 métricas de desempenho-chave usando funções Python puras (`def`), loops (`for`) e lógica condicional (`if`).
-      * **Visualização de Dados:** Geração de 3 tipos de gráficos (Barras, Pizza e Dispersão) com a biblioteca `matplotlib` para ilustrar os achados.
-      * **Relatório Final:** Conclusão da análise apresentada em Markdown ao final do notebook.
-  * `/graficos` (Opcional): Diretório que pode ser usado para armazenar as visualizações de dados exportadas.
+O foco principal é utilizar **fundamentos nativos da linguagem Python** (`def`, `for`, `if`, `else`) para extrair métricas e embasar uma decisão estratégica: identificar a loja mais problemática (alto risco) e a mais saudável (potencial de crescimento), para recomendar qual unidade poderia ser vendida.
 
-## 💡 Principais Descobertas e a Reviravolta
+A análise revelou que a **Loja 1** é a de maior faturamento, mas também a mais problemática (pior avaliação, frete mais caro). A **Loja 4**, por outro lado, tem o menor faturamento, mas uma operação mais saudável (frete baixo, avaliações positivas).
 
-A análise revelou que a primeira impressão nem sempre é a correta.
+## 2. Estrutura do Projeto e Organização
 
-### A Análise Superficial
+A análise completa está contida em um único Jupyter Notebook (`.ipynb`). A metodologia segue 6 passos principais:
 
-À primeira vista, a **Loja 4** parecia a candidata ideal para a venda, pois apresentava o **pior faturamento** entre as quatro.
+1.  **Carregamento dos Dados:** Os 4 arquivos CSV (um para cada loja) são carregados do GitHub em DataFrames do Pandas.
+2.  **Organização dos Dados:** Os DataFrames são agrupados em um dicionário (`dfs_lojas`) para facilitar a iteração.
+3.  **Conversão para "Modo Raiz":** Cada DataFrame é convertido para uma lista de dicionários (`dados_por_loja`) usando `.to_dict('records')`.
+4.  **Funções de Análise:** Funções reutilizáveis em Python puro são usadas para calcular Faturamento, Vendas por Categoria, Média de Avaliação, Ranking de Produtos e Média de Frete.
+5.  **Armazenamento de Resultados:** Os resultados são salvos em dicionários (ex: `resultados_faturamento`) para fácil acesso.
+6.  **Visualização:** Os resultados são plotados com `matplotlib` para gerar os gráficos da análise.
 
-### A Descoberta Geográfica: O Ponto de Virada
+## 3. Exemplos de Gráficos e Insights Obtidos
 
-O *insight* decisivo surgiu da análise de geolocalização, cruzando os dados das colunas 'lat' (latitude) e 'lon' (longitude). O gráfico de dispersão (scatterplot) mostrou um padrão claro:
+A análise gerou diversas visualizações para identificar padrões. Os principais insights vêm do cruzamento de métricas:
 
-  * **Operações Locais:** As Lojas 1, 2 e 3 concentram suas operações em uma única região.
-  * **Operação Nacional:** A **Loja 4** (destacada em vermelho nos gráficos) era a única com uma rede de **distribuição NACIONAL**, atendendo clientes em todo o território.
+* **Gráfico de Barras (Faturamento):** Demonstra visualmente a liderança de faturamento da **Loja 1 (R$ 1.53M)** e o menor volume da **Loja 4 (R$ 1.38M)**.
+* **Gráfico de Dispersão (Faturamento vs. Avaliação):** Este é o *insight* principal. A **Loja 1** (que mais fatura) tem a **pior avaliação (3.98 estrelas)**. As lojas 2 e 3 estão melhores posicionadas (faturamento alto, avaliação boa).
+* **Gráfico de Pizza (Categorias):** Mostra que "Móveis" e "Eletrônicos" dominam as vendas em todas as lojas, compondo a maior parte do faturamento.
+* **Análise de Frete:** Um *insight* adicional confirma o problema da Loja 1: ela possui o **frete médio mais caro (R$ 34.69)**, enquanto a Loja 4 possui o **mais barato (R$ 31.28)**, reforçando a ideia de uma operação mais eficiente.
 
-### Cruzando Métricas Adicionais
+## 4. Instruções para Executar o Notebook
 
-Essa descoberta mudou a perspectiva sobre a Loja 4, que passou de "pior loja" para "ativo oculto". Outras métricas reforçaram isso:
+Os dados deste projeto são carregados diretamente de URLs públicas, não sendo necessário baixar arquivos CSV.
 
-  * **Loja 1 (Maior Faturamento):** Apesar de liderar em receita, apresentava a **pior avaliação média** dos clientes (3.98 estrelas) e o **frete mais caro**, indicando sérios problemas logísticos e de satisfação.
-  * **Loja 4 (Pior Faturamento):** Em contrapartida, possuía uma **boa avaliação** (4.00 estrelas) e o **frete mais barato**, demonstrando uma operação logística eficiente e com potencial de escala.
 
 ## 🚀 Recomendação Final
 
@@ -53,7 +52,7 @@ Embora tenha o maior faturamento, ela representa um risco significativo devido �
 Para replicar esta análise, siga os passos abaixo:
 
 1.  Clone este repositório para sua máquina local (ex: `git clone ...`).
-2.  Abra o notebook `AluraStoreBrasil.ipynb` em um ambiente compatível com Jupyter (como Jupyter Lab, VS Code ou Google Colab).
+2.  Abra o notebook `AluraStoreBr.ipynb` em um ambiente compatível com Jupyter (como Jupyter Lab, VS Code ou Google Colab).
 3.  **Recomendação (Google Colab):**
       * Faça o upload do notebook para o Google Colab.
       * No menu, acesse "Ambiente de execução".
