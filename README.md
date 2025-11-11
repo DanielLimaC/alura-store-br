@@ -40,7 +40,6 @@ A análise gerou diversas visualizações para identificar padrões. Os principa
 
 Os dados deste projeto são carregados diretamente de URLs públicas, não sendo necessário baixar arquivos CSV.
 
-
 ## 🚀 Recomendação Final
 
 A recomendação estratégica, baseada nas evidências, foi **vender a Loja 1**.
@@ -52,7 +51,7 @@ Embora tenha o maior faturamento, ela representa um risco significativo devido �
 Para replicar esta análise, siga os passos abaixo:
 
 1.  Clone este repositório para sua máquina local (ex: `git clone ...`).
-2.  Abra o notebook `AluraStoreBr.ipynb` em um ambiente compatível com Jupyter (como Jupyter Lab, VS Code ou Google Colab).
+2.  Abra o notebook `AluraStoreBrasil.ipynb` em um ambiente compatível com Jupyter (como Jupyter Lab, VS Code ou Google Colab).
 3.  **Recomendação (Google Colab):**
       * Faça o upload do notebook para o Google Colab.
       * No menu, acesse "Ambiente de execução".
